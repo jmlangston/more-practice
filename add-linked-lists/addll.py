@@ -6,7 +6,7 @@ class Node(object):
         self.next = next
 
     def as_rev_string(self):
-        """Represent data for this node and it's successors as a string.
+        """Represent data for this node and its successors as a string.
 
         >>> l1 = Node(3)
         >>> l1.as_rev_string()
@@ -67,6 +67,21 @@ def add_linked_lists(l1, l2):
     >>> add_linked_lists(l1, l2).as_rev_string()
     '212'
     """
+
+    num1 = l1.as_rev_string()
+    num2 = l2.as_rev_string()
+
+    list_digits = list(str(int(num1) + int(num2)))
+
+    # list_nodes = []
+    next_node = None
+
+    for digit in list_digits:
+        new_node = Node(digit, next_node)
+        next_node = new_node    # update next_node
+        last_node = new_node    # track last_node
+
+    return last_node
 
 
 if __name__ == '__main__':
